@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("How many numbers do you want to enter? ");
+    if (scanf("%d", &n) != 1) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    int i;
+    int posCount = 0, negCount = 0, zeroCount = 0;
+    int num;
+
+    for (i = 0; i < n; i++) {
+        printf("Enter number %d: ", i + 1);
+        if (scanf("%d", &num) != 1) {
+            printf("Invalid input. Skipping.\n");
+            // clear input buffer, or handle error
+            // For simplicity, we assume user enters integers properly
+            continue;
+        }
+        if (num > 0) {
+            posCount++;
+        } else if (num < 0) {
+            negCount++;
+        } else {
+            zeroCount++;
+        }
+    }
+
+    printf("\nResults:\n");
+    printf("Positive numbers: %d\n", posCount);
+    printf("Negative numbers: %d\n", negCount);
+    printf("Zeros: %d\n", zeroCount);
+
+    return 0;
+}

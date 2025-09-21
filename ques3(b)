@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+// Function to compute nCr (binomial coefficient)
+int binomialCoeff(int n, int r) {
+    int res = 1;
+    int k;
+    if (r > n - r)
+        r = n - r;
+    for (k = 0; k < r; k++) {
+        res = res * (n - k) / (k + 1);
+    }
+    return res;
+}
+
+int main() {
+    int rows, i, j;
+    printf("Enter number of rows for Pascal's triangle part (b): ");
+    scanf("%d", &rows);
+
+    for (i = 0; i < rows; i++) {
+        // print leading spaces for formatting
+        for (j = 0; j < rows - i - 1; j++) {
+            printf(" ");
+        }
+        // print entries of Pascal's triangle row i
+        for (j = 0; j <= i; j++) {
+            printf("%d ", binomialCoeff(i, j));
+        }
+        printf("\n");
+    }
+    return 0;
+}
